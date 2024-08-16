@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: registry-ingress
+  namespace: registry
+  annotations:
+    spec.ingressClassName: "traefik"
+    traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+spec:
+  rules:
+  - host: "registry.gtja.godscode.com.cn"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: registry-docker-registry
+            port:
+              number: 5000
+  tls:
+  - hosts:
+    - registry.gtja.godscode.com.cn
+    secretName: godscode-tls-cert

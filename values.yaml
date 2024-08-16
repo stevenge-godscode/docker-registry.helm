@@ -68,8 +68,9 @@ resources: {}
   #  memory: 128Mi
 persistence:
   accessMode: 'ReadWriteOnce'
-  enabled: false
-  size: 10Gi
+  enabled: true
+  size: 200Gi
+  existingClaim: registry-pvc
   # storageClass: '-'
 
 # set the type of filesystem to use: filesystem, s3
