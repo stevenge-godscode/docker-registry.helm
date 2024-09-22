@@ -71,7 +71,7 @@ persistence:
   enabled: true
   size: 200Gi
   existingClaim: registry-pvc
-  # storageClass: '-'
+  # storageClass: 'rook-cephfs'
 
 # set the type of filesystem to use: filesystem, s3
 storage: filesystem
@@ -114,7 +114,7 @@ secrets:
 # https://docs.docker.com/registry/recipes/mirror/
 proxy:
   enabled: false
-  remoteurl: https://registry-1.docker.io
+  remoteurl: http://freeworld.godscode.com.cn:5000
   username: ""
   password: ""
   # the ref for a secret stored outside of this chart
@@ -142,6 +142,7 @@ configData:
   storage:
     cache:
       blobdescriptor: inmemory
+
   http:
     addr: :5000
     headers:
